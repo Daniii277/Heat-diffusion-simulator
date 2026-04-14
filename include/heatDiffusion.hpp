@@ -1,4 +1,6 @@
 #include <vector>
 #include <cstdint>
 
-void heatDiffusion(std::vector<float>* matrix, const uint32_t size);
+void heatDiffusion(const std::vector<float>& matrix_old, std::vector<float>& matrix_new, const uint32_t matrixSize, const uint32_t rowSize);
+
+void printMatrix(const std::vector<float>& matrix, uint32_t matrixSize, uint32_t rowSize);
