@@ -15,20 +15,21 @@ int main(int argc, char* argv[]){
     std::cin >> iter;
     uint32_t MATRIX_SIZE = rowSize * rowSize;
     //Creo el vector que contendrá la matriz con memoria contigua.
-    std::vector<float> h_matrix_old = std::vector<float>(MATRIX_SIZE, 0.0);
-    std::vector<float> h_matrix_new = std::vector<float>(MATRIX_SIZE);
-    std::fill(h_matrix_new.begin(), h_matrix_new.end(), 0.0f);
+    std::vector<float> h_matrix_old = std::vector<float>(MATRIX_SIZE, 0.0f);
+    std::vector<float> h_matrix_new = std::vector<float>(MATRIX_SIZE, 0.0f);
     generateMatrix(h_matrix_old, rowSize);
-    std::cout << "tamaño de la matriz : " << MATRIX_SIZE << std::endl;
-    std::cout << "Matriz inicial : " << std::endl;
-    printMatrix(h_matrix_old, MATRIX_SIZE, rowSize);
+    generateMatrix(h_matrix_new, rowSize);
+
+    //std::cout << "tamaño de la matriz : " << MATRIX_SIZE << std::endl;
+    //std::cout << "Matriz inicial : " << std::endl;
+    //printMatrix(h_matrix_old, MATRIX_SIZE, rowSize);
+
+    //SECUENCIAL
     auto start = std::chrono::high_resolution_clock::now();
     for(uint32_t i = 0; i < iter; i++){
-        std::cout << "iteración " << i+1 << std::endl;
-        heatDiffusion(h_matrix_old, h_matrix_new, MATRIX_SIZE, rowSize);
-        printMatrix(h_matrix_new, MATRIX_SIZE, rowSize);
-        generateMatrix(h_matrix_new, rowSize);
-
+        //std::cout << "iteración " << i+1 << std::endl;
+        heatDiffusionByBlocks(h_matrix_old, h_matrix_new, MATRIX_SIZE, rowSize);
+        //printMatrix(h_matrix_new, MATRIX_SIZE, rowSize);
         h_matrix_old.swap(h_matrix_new);
     }
     auto end = std::chrono::high_resolution_clock::now();
