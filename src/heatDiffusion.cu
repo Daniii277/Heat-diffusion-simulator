@@ -72,3 +72,10 @@ void printMatrix(const std::vector<float>& matrix, uint32_t matrixSize, uint32_t
     }
     std:: cout << std::endl;
 }
+
+
+
+__global__ void heatDiffusionKernel(const float* matrix_old, float* matrix_new, const uint32_t rowSize){
+
+
+}
