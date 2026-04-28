@@ -32,6 +32,8 @@ void heatDiffusionByBlocks(const std::vector<float>& matrix_old, std::vector<flo
         }
     }
 }
+//Nota : parallel for puede no ejecutarse bien en paralelo si no se inicializa el bucle en 0
+// Por hacer : un bucle por cada linea con pragma omp for schedule(static) nowait, el bucle general con omp parallel
 
 
 double countTimeByBlocks(const uint32_t BlockSize, const uint32_t &MATRIX_SIZE, const uint32_t &rowSize, const uint32_t& iter, const uint32_t times){

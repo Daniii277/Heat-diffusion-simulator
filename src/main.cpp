@@ -27,7 +27,7 @@ int main(int argc, char* argv[]){
         auto start = std::chrono::high_resolution_clock::now();
         for(uint32_t i = 0; i < iter; i++){
             //std::cout << "iteración " << i+1 << std::endl;
-            heatDiffusionByBlocks(h_matrix_old, h_matrix_new, MATRIX_SIZE, rowSize, 16);
+            heatDiffusionByBlocks(h_matrix_old, h_matrix_new, MATRIX_SIZE, rowSize,16);
             //printMatrix(h_matrix_new, MATRIX_SIZE, rowSize);
             h_matrix_old.swap(h_matrix_new);
         }
